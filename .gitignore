@@ -1,0 +1,44 @@
+# This is a generic gitignore template
+
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.eggs/
+
+# Distribution / packaging
+dist/
+build/
+*.egg
+*.whl
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# macOS specific
+.DS_Store
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Test files
+.pytest_cache/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Miscellaneous
+*.log
+*.sqlite3
