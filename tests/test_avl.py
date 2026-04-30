@@ -2,7 +2,9 @@
 File: test_avl.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file implements tests for an AVL balanced binary search tree.  It subclasses the test class TestBST, found in test_base.py.  As such, it results in 13 tests: 6 in TestBST for testing base.py; 6 in TestBST for testing avl.py; and one test for avl.py appearing below.
+Description: This file implements tests for an AVL balanced binary 
+    search tree.  It subclasses the test class TestBST, found in 
+    test_base.py. 
 '''
 import pickle
 import random
@@ -18,7 +20,8 @@ class TestAVL(TestBST):
         
     def checkAVL(self,n):
         ''' In the literature, AVL trees have one property
-            * In each node, the heights of the left and right subtrees can differ by at most 1. '''
+            * In each node, the heights of the left and right subtrees can 
+              differ by at most 1. '''
         if n == None:  return 0
         lHeight = self.checkAVL(n.left)
         rHeight = self.checkAVL(n.right)

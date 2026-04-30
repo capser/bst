@@ -2,7 +2,8 @@
 File: test_splay.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file implements tests for a splay binary search tree.  It subclasses the TestBST class found in test_base.py.  As such, it results in 13 tests: 6 for testing base.py; 6 for testing splay.py using the tests in TestBST; and one test for splay.py appearing below.
+Description: This file implements tests for a splay binary search tree.  
+    It subclasses the TestBST class found in test_base.py.  
 '''
 
 import random

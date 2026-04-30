@@ -2,7 +2,8 @@
 File: test_aa.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file implements tests for an AA balanced binary search tree.  It subclasses of the TestBST class found in test_base.py.  As such, it results in 13 tests: 6 from TestBST for testing base.py; 6 from TestBST for testing aa.py; and one test for aa.py appearing below.
+Description: This file implements tests for an AA balanced binary search tree.  
+    It subclasses of the TestBST class found in test_base.py.  
 '''
 import pickle
 import random
@@ -18,9 +19,12 @@ class TestAA(TestBST):
     def checkAA(self,n):
         ''' In the literature, AA trees have 5 properties
             * The level of every leaf node is one.
-            * The level of every left child is exactly one less than that of its parent.
-            * The level of every right child is equal to or one less than that of its parent.
-            * The level of every right grandchild is strictly less than that of its grandparent.
+            * The level of every left child is exactly one less than that of
+              its parent.
+            * The level of every right child is equal to or one less than that
+              of its parent.
+            * The level of every right grandchild is strictly less than that 
+              of its grandparent.
             * Every node of level greater than one has two children. '''
         if n!=None:
             if n.left == None and n.right == None:

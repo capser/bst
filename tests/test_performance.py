@@ -2,7 +2,10 @@
 File: test_performance.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file contains code to test the performance of the bst variants for various value insertion orders.  While AA, AVL, and Red-Black trees always exhibited O(log(n)) performance, Base (unbalanced) and Splay trees exhibited divergences from O(log(n)) under some conditions.  
+Description: This file contains code to test the performance of the bst 
+    variants for various value insertion orders.  While AA, AVL, and 
+    Red-Black trees always exhibited O(log(n)) performance, Base (unbalanced) 
+    and Splay trees exhibited divergences from O(log(n)) under some conditions.
 '''
 
 from time import perf_counter

@@ -2,7 +2,8 @@
 File: test_red_black.py.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file implements tests for an red-black balanced binary search tree.  It subclasses the TestBST class found in test_base.py.  As such, it results in 13 tests: 6 in TestBST for testing base.py; 6 for testing red_black.py using the tests in TestBST; and one test for red_black.py appearing below,
+Description: This file implements tests for an red-black balanced binary search
+    tree.  It subclasses the TestBST class found in test_base.py.  
 '''
 import pickle
 import random
@@ -18,7 +19,8 @@ class TestRB(TestBST):
         
     def checkRedBlack(self,tree):
         ''' In the literature, red-black trees have 5 properties
-            * Every node has a color.  -- This is assured by using a boolean 'red' property on nodes
+            * Every node has a color.  -- This is assured by using a boolean 'red' 
+              property on nodes
             * The root is black.       -- This is tested
             * Every leaf is a special node called NIL (with no key) -- None is used here
             * NIL is black.            -- None is black in testDepthProperty()
@@ -27,7 +29,8 @@ class TestRB(TestBST):
             * Every path from root to leaf has the same number of black nodes.
               -- This is tested by testDepthProperty() '''
         def checkRedProperty(n):
-            ''' Each red node can only have black node children, where None is always black. '''
+            ''' Each red node can only have black node children, where None is always
+                black. '''
             if n!=None:
                 if n.red:
                     self.assertTrue((n.left==None or not n.left.red) and

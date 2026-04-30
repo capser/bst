@@ -2,7 +2,8 @@
 File: test_example.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file contains the example code in README.md to test its correctness
+Description: This file contains the example code in README.md to test 
+    its correctness
 '''
 
 import random

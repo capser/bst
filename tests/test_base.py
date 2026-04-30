@@ -2,7 +2,10 @@
 File: test_base.py
 Author: Anthony Barrett
 Date: September 23, 2025
-Description: This file implements tests for a binary search tree.  It derives from the 'AI overview' result from a google search query on "testing binary search tree code python".  I have no idea who to attribute the original coding approach to.
+Description: This file implements tests for a binary search tree.  
+    It derives from the 'AI overview' result from a google search 
+    query on "testing binary search tree code python".  I have no 
+    idea who to attribute the original coding approach to.
 '''
 import pickle
 import random
