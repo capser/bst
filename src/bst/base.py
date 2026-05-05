@@ -52,28 +52,28 @@ class Tree:
     def __delitem__(self,key):      # support "del tree[key]"
         if isinstance(key, slice):
             if key.step not in [None,1,-1]:
-                raise KeyError("Slicing non unit step sizes is not supported")
+                raise KeyError(key)
             if self.root==None: return
             if key.step==-1:
-                n = self._maximum(self.root) if None == key.start else self._find(key.start)
-                if key.start!=None and n.key > key.start:
+                n = self._find(key.start) if key.start else self._maximum(self.root)
+                if key.start and n.key > key.start:
                     n = self._previousNode(n)
-                while n!=None and (None==key.stop or n.key > key.stop):
+                while n and (not key.stop or n.key > key.stop):
                     previous = self._previousNode(n)
                     self._delete(n)
                     n = previous
             else:
-                n = self._minimum(self.root) if None == key.start else self._find(key.start)
-                if key.start!=None and n.key < key.start:
+                n = self._find(key.start) if key.start else self._minimum(self.root)
+                if key.start and n.key < key.start:
                     n = self._nextNode(n)
-                while n!=None and (None==key.stop or n.key < key.stop):
+                while n and (not key.stop or n.key < key.stop):
                     next = self._nextNode(n)
                     self._delete(n)
                     n = next
         else:
             n = self._find(key)
             if n == None or key != n.key:
-                raise KeyError("Attempt to delete a non existent key.")
+                raise KeyError(key)
             self._delete(n)
     
     def __getitem__(self,key):      # support "k = tree[key]" and "for k in tree[key]: ..."
@@ -100,31 +100,27 @@ class Tree:
             raise KeyError(key)
         if self.root==None: return
         if key.step==-1:
-            n = self._maximum(self.root) if None == key.start else self._find(key.start)
-            if key.start!=None and n.key > key.start:
+            n = self._find(key.start) if key.start else self._maximum(self.root)
+            if key.start and n.key > key.start:
                 n = self._previousNode(n)
-            while n!=None and (None==key.stop or n.key > key.stop):
-              oldKey = n.key
-              yield n.key
-              if n.key!=None:
-                  n = self._previousNode(n)
-              else:
-                  n = self._find(oldKey)
-                  if n!=None and n.key > oldKey:
-                      n = self._previousNode(n)
-        else:
-            n = self._minimum(self.root) if None == key.start else self._find(key.start)
-            if key.start!=None and n.key < key.start:
-                n = self._nextNode(n)
-            while n!=None and (None==key.stop or n.key < key.stop):
+            while n and (not key.stop or n.key > key.stop):
                 oldKey = n.key
                 yield n.key
-                if n.key!=None:
-                    n = self._nextNode(n)
-                else:
+                if not n.key: # node was deleted during iteration
                     n = self._find(oldKey)
-                    if n!=None and n.key < oldKey:
-                        n = self._nextNode(n)
+                if n and n.key >= oldKey:
+                    n = self._previousNode(n)
+        else:
+            n = self._find(key.start) if key.start else self._minimum(self.root)
+            if key.start and n.key < key.start:
+                n = self._nextNode(n)
+            while n and (not key.stop or n.key < key.stop):
+                oldKey = n.key
+                yield n.key
+                if not n.key: # node was deleted during iteration
+                    n = self._find(oldKey)
+                if n and n.key <= oldKey:
+                    n = self._nextNode(n)
       
     def _newNode(self,key):
         return Node(key)

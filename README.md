@@ -1,4 +1,4 @@
-# BST
+# BST -- Binary Search Trees
 
 BST is a Python library with multiple flavors of binary search trees.  The motivation here was to explore the relative code complexities of balancing, using different approaches coded as cleanly as possible.  As such, the trees were implemented as classes that derive from an unbalanced binary search tree (BST) class.  The trees supported here are:
 
@@ -29,11 +29,11 @@ python3 -m pip install -e .
 The API is implemented in base.py and does not follow the standard API for binary search trees.  The differences derive from a desire to be as pythonic as possible.  This requirement adjusts the API as follows.
 
 - `tree = Tree()` - Create a tree.  
-- `tree[key]` - Get the `key` from `tree` if it exists.  Otherwise it is `None`.  If the key is a slice, the value is a generator that iterates over the slice.  The only step sizes supported are 1 (the default) and -1 for iterating forward and backward respectively.  For instance, `next(tree[key::-1])` returns that data element with the greatest key less than or equal to `key`.
-- `del tree[key]` - Delete an element matching `key`, and a KeyError occurs if no such element exists.  If `key` is a slice, the deleted elements are those in the slice.  For instance `del tree[:]` empties the entire tree.
+- `tree[key]` - Get the `key` from `tree` if it exists.  Otherwise it is `None`.  If the key is a slice, the value is a generator that iterates over the slice.  The only step sizes supported are 1 (the default) and -1 for iterating forward and backward respectively.  For instance, `next(tree[key::-1])` returns the greatest key less than or equal to `key`.
+- `del tree[key]` - Delete `key` from `tree`, and a KeyError occurs if no such element exists.  If `key` is a slice, the deleted keys are those in the slice.  For instance `del tree[:]` empties the entire tree.
 - `tree += key` - Insert immutable `key` into the tree if it isn't there already.
 - **Pickle** - All trees can be saved/loaded using pickle to provide persistence.
-- Just like other python containers, trees evaluate to true only when they contain elements.  Thus, testing if `tree` is empty involves evaluating `not tree`.
+- Just like other python containers, trees evaluate to true only when they contain keys.  Thus, testing if `tree` is empty involves evaluating `not tree`.
 
 The code below builds/uses/deletes a generic binary search tree.  To use the balanced variants, replace `bst.base` with the desired variant.  For instance `bst.red_black` would test red-black trees.  This code appears in test_example.py in the tests directory.
 
