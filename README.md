@@ -2,13 +2,13 @@
 
 BST is a Python library with multiple flavors of binary search trees.  The motivation here was to explore the relative code complexities of balancing, using different approaches coded as cleanly as possible.  As such, the trees were implemented as classes that derive from an unbalanced binary search tree (BST) class.  The trees supported here are:
 
-- **base** -- does not balance the binary search tree;
-- **avl** -- balances by keeping track of branch depths;
-- **avl2** -- balances by keeping track of relative branch depths using balance factors;
-- **red_black** -- balances by maintaining red-black properties;
-- **aa** -- balances by maintaining red-black properties, where red nodes can only be added as a right subchild;
-- **splay** -- balances by always rotating the last accessed node to the top; and
-- **treap** -- balances by randomly prioritizing nodes and rotating to maintain a heap property.
+- `bst.base` -- does not balance the binary search tree;
+- `bst.avl` -- balances by keeping track of branch depths;
+- `bst.avl2` -- balances by keeping track of relative branch depths using balance factors;
+- `bst.red_black` -- balances by maintaining red-black properties;
+- `bst.aa` -- balances by maintaining red-black properties, where red nodes can only be added as a right subchild;
+- `bst.splay` -- balances by always rotating the last accessed node to the top; and
+- `bst.treap` -- balances by randomly prioritizing nodes and rotating to maintain a heap property.
 
 This code derives from multiple sources:
 
