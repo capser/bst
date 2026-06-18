@@ -40,18 +40,14 @@ class Tree(base.Tree):
                 self._left_rotate(n.parent)
       
     def _delete(self, n):
-        np = n.parent
-        right = np!=None and n==np.right
-        super()._delete(n)
-        n = self.root if np==None else (np.right if right else np.left)
-        if n==None: return
-        while ((n.right!=None and n.right.priority>n.priority) or
-               (n.left!=None and n.left.priority>n.priority)):
-            if n.right==None:
-                self._right_rotate(n)
-            elif n.left==None:
-                self._left_rotate(n)
-            elif n.left.priority>n.right.priority:
-                self._right_rotate(n)
-            else:
-                self._left_rotate(n)
+        # rotate node down to a leaf
+        while n.left or n.right:
+            if not n.left: self._left_rotate(n)
+            elif not n.right: self._right_rotate(n)
+            elif n.left.priority > n.right.priority: self._right_rotate(n)
+            else: self._left_rotate(n)
+        # Detach leaf
+        parent = n.parent
+        if not parent: self.root = None
+        elif parent.left == n: parent.left = None
+        else: parent.right = None
